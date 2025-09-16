@@ -20,7 +20,7 @@ function Poster() {
             </div>
             <div className='flex flex-col justify-center items-center mt-5 h-30 '>
                 <input 
-                className='mb-5 w-[75%] h-11 border border-stone-700 rounded-full px-5 text-red-500 placeholder-stone-500' 
+                className='mb-5 w-[75%] h-11 border border-stone-700 rounded-full px-5  placeholder-stone-500' 
                 placeholder='Enter personal Email' 
                 type="text"
                 />
