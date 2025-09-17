@@ -9,3 +9,5 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 
 db = client.ClientManagementSystem
 collection = db["Users"]
+activities_collection = db["Activities"]
+clients_collection = db["Clients"]

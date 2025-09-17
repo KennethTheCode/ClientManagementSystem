@@ -7,6 +7,7 @@ import {Link, useNavigate} from 'react-router-dom'
 
 function Login() {
     const navigate = useNavigate();
+
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -19,12 +20,16 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+
             const res = await fetch(`http://127.0.0.1:8000/login/`,{
                 method: "POST",
                 headers: {"Content-type": "application/json"},
                 body: JSON.stringify(form)
             });
             if (res.ok) {
+                const data = await res.json();
+                localStorage.setItem('userId', data.data.id);
+                console.log(data)
                 navigate("/mainpage");
             } else {
                 alert("Sign up failed")
