@@ -18,6 +18,7 @@ class Activity(BaseModel):
     contact: str
     revenue: float
     deadline: datetime
+    progress: int
     projectDescription: str
     timestamp: datetime = datetime.now()
 

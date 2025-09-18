@@ -5,6 +5,7 @@ import New_Client from './Components/New_Client';
 
 function dashboard() {
     const [activities, setActivities] = useState([]);
+    const [clients, setClients] = useState([]);
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -16,6 +17,17 @@ function dashboard() {
         }
         }
         if (userId) fetchActivities();
+    }, [userId]);
+
+    useEffect(() => {
+        async function fetchClients() {
+        const res = await fetch(`http://127.0.0.1:8000/client/${userId}`);
+        if (res.ok) {
+            const data = await res.json();
+            setClients(data.clients);
+        }
+        }
+        if (userId) fetchClients();
     }, [userId]);
   return (
     <div>
@@ -33,7 +45,7 @@ function dashboard() {
         <div className='grid grid-cols-4 gap-4 p-4 '>
             <div className='bg-stone-800 h-25 rounded-lg p-4 border border-stone-700'>
                 <p className='text-white'>Number of Clients</p>
-                <h2 className='text-white'>10</h2>
+                <h2 className='text-white'>{clients.length}</h2>
             </div>
                <div className='bg-stone-800 h-25 rounded-lg p-4 border border-stone-700'>
                 <p className='text-white'>Number of Projects</p>

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2",
+    "@mui/x-charts": "^8.11.3",
+    "ag-charts-enterprise": "^12.2.0",
+    "ag-charts-react": "^12.2.0"
+  }
+}

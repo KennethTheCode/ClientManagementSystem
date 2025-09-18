@@ -11,7 +11,8 @@ function Add_activity() {
     contact: '',
     revenue: '',
     deadline: '',
-    projectDescription: ''
+    projectDescription: '',
+    progress:''
   });
 
   const handleInput = (e) => {
@@ -26,9 +27,10 @@ function Add_activity() {
       const payload = { ...form, user_id: userId,
          projectName: form.projectName,
           clientName: form.clientName,
-          content: form.contact,
+          contact: form.contact,
           revenue: form.revenue,
           deadline: form.deadline,
+          progress: form.progress,
           projectDescription: form.projectDescription};
 
       const res = await fetch("http://127.0.0.1:8000/activities", {
@@ -105,6 +107,15 @@ function Add_activity() {
                 onChange={handleInput}
                 name='deadline'
                 value={form.deadline}/>
+
+            <h6>Progress</h6>
+            <input
+                className='border border-stone-700 w-full rounded mt-3 p-2 placeholder-stone-500 mb-4'
+                placeholder='Enter Progress'
+                type='number'
+                onChange={handleInput}
+                name='progress'
+                value={form.progress}/>
 
             <h6>Project Description</h6>
             <textarea
