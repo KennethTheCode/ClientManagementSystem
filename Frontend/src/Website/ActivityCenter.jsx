@@ -32,7 +32,7 @@ function ActivityCenter() {
           <div className='w-[90%]'>
             <div className='flex gap-2 items-center'>
               <h5 className='text-white'>{activity.projectName}</h5>
-              <h4>deadline: {activity.deadline ? activity.deadline.slice(0, 10) : ''}</h4>
+              <h4 className='text-white'>deadline: {activity.deadline ? activity.deadline.slice(0, 10) : ''}</h4>
             </div>
             <h4 className='text-white mr-5'>{activity.projectDescription}</h4>
           </div>

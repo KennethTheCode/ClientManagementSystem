@@ -45,7 +45,7 @@ function Signup() {
             <img src={Systemlogo} alt="System Logo" />
           </div>
           <div className='w-full h-[10vh] flex items-center justify-center flex-col'>
-            <h2>SIGN UP TO Simpli<span className='text-lime-600'>Go</span></h2>
+            <h2 >SIGN UP TO Simpli<span className='text-lime-600'>Go</span></h2>
             <p className='text-white'>
               Already have a SimpliGo account?{" "}
               <span className='text-lime-200 underline' onClick={() => navigate('/home')}>Log in</span>
@@ -53,7 +53,7 @@ function Signup() {
           </div>
           <div className='h-[55vh] w-[90%] p-3 border-b border-stone-700 mx-auto mb-7'> 
             <form onSubmit={handleSubmit}> 
-              <h5>Username or Email</h5>
+              <h5 className='text-white'>Username or Email</h5>
               <input
                 className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                 type="email"
@@ -62,7 +62,7 @@ function Signup() {
                 onChange={handleInput}
               />
 
-              <h5>Password</h5>
+              <h5 className='text-white'>Password</h5>
               <input
                 className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                 type="password"
@@ -71,7 +71,7 @@ function Signup() {
                 onChange={handleInput}
               />
 
-              <h5>Birthday</h5>
+              <h5 className='text-white'>Birthday</h5>
               <input
                 className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                 type="date"
@@ -80,7 +80,8 @@ function Signup() {
                 onChange={handleInput}
               />
 
-              <h5>Address</h5>
+              <h5 className='text-white'
+              >Address</h5>
               <input
                 className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                 type="text"

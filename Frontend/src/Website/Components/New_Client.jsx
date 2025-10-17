@@ -36,7 +36,7 @@ function New_Client() {
 
             if (res.ok) {
                 setShowModal(false);
-                // Optionally clear form or refresh clients here
+                window.location.reload();
             } else {
                 alert("Client creation failed!");
             }

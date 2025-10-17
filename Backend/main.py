@@ -16,18 +16,18 @@ router = APIRouter()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5175"],
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-@app.get("/")
+# Users Backend
+@app.get("/") # Get all users
 async def view_users():
     data = collection.find()
     return all_users(data)
 
-@router.post("/")
+@router.post("/") # Create a new user
 async def create_user(new_user: Users):
     try:
         resp = collection.insert_one(dict(new_user))
@@ -35,14 +35,15 @@ async def create_user(new_user: Users):
     except Exception as e:
         return HTTPException(status_code=500, detail=f"Some error {e}")
 
-@router.post("/login")
+@router.post("/login") # User Authentication
 async def authentication(request: UserLogin):
     user = collection.find_one({"email": request.email, "password": request.password})
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     return {"status": 200, "data": user_data(user)}
-    
-@router.post("/activities")
+
+# Activities Backend
+@router.post("/activities") # Create a new Activity
 async def create_activity(activity: Activity):
     try:
         # Convert user_id to ObjectId
@@ -54,7 +55,16 @@ async def create_activity(activity: Activity):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error: {e}")
     
-@router.get("/user/{user_id}")
+@router.delete("/user/{user_id}/activity/{activity_id}")
+async def delete_activity(user_id: str, activity_id: str):
+    result = activities_collection.delete_one({"_id": ObjectId(activity_id)})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Activity not found.")
+    return {"status": 200, "detail": "Activity deleted successfully."}
+
+
+    
+@router.get("/user/{user_id}") #Get user with activities
 async def get_user_with_activities(user_id: str):
     user = collection.find_one({"_id": ObjectId(user_id)})
     if not user:
@@ -74,7 +84,9 @@ async def get_user_with_activities(user_id: str):
         "activities": activities
     }
 
-@router.post("/clients")
+
+# Clients Backend
+@router.post("/clients") # Create a new Client
 async def post_client(client: Client):
     try:
         # Convert user_id to ObjectId
@@ -86,7 +98,7 @@ async def post_client(client: Client):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error: {e}")
     
-@router.get("/client/{user_id}")
+@router.get("/client/{user_id}") # Get user with clients
 async def get_user_with_clients(user_id: str):
     user = collection.find_one({"_id": ObjectId(user_id)})
     if not user:

@@ -32,6 +32,7 @@ function Add_activity() {
           deadline: form.deadline,
           progress: form.progress,
           projectDescription: form.projectDescription};
+          
 
       const res = await fetch("http://127.0.0.1:8000/activities", {
         method: "POST",
@@ -42,7 +43,7 @@ function Add_activity() {
 
       if (res.ok) {
         setShowModal(false);
-        // Optionally clear form or refresh activities here
+        window.location.reload();
       } else {
         alert("Activity creation failed!");
       }
@@ -119,7 +120,7 @@ function Add_activity() {
 
             <h6>Project Description</h6>
             <textarea
-                className='border border-stone-700 w-full rounded mt-3 p-2 placeholder-stone-500 mb-4 h-[20vh]'
+                className='border border-stone-700 w-full rounded mt-3 p-2 placeholder-stone-500 mb-4 h-[10vh]'
                 placeholder='Enter Project Description'
                 type='text'
                 onChange={handleInput}

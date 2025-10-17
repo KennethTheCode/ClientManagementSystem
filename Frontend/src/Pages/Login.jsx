@@ -53,7 +53,7 @@ function Login() {
                 </div>
                 <div className=' h-[35vh] w-[90%] p-3 border-b border-stone-700 mx-auto mb-7'> 
                     <form onSubmit={handleSubmit}> 
-                        <h5>Username or Email</h5>
+                        <h5 className='text-white'>Username or Email</h5>
                         <input className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                         type="text"
                         placeholder="Enter your username or email"
@@ -61,7 +61,7 @@ function Login() {
                         onChange={handleInput}>
                         </input>
 
-                        <h5>Password</h5>
+                        <h5 className='text-white'>Password</h5>
                         <input className='w-full h-11 border border-stone-700 mt-3 rounded placeholder-stone-500 text-white p-2 mb-5'
                         type="password"
                         placeholder="Password"

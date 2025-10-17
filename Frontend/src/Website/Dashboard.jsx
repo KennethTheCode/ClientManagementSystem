@@ -1,4 +1,5 @@
 import { useEffect, useState, React } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Systemlogo from '../Images/Systemlogo.png'
 import Add_activity from './Components/add_activity';
 import New_Client from './Components/New_Client';
@@ -7,6 +8,7 @@ function dashboard() {
     const [activities, setActivities] = useState([]);
     const [clients, setClients] = useState([]);
     const userId = localStorage.getItem('userId');
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchActivities() {
@@ -37,7 +39,7 @@ function dashboard() {
                 <h6>Here's what's happening</h6>
             </div>
             <div className='w-[15%] h-20 flex items-center'>
-                    <img src={Systemlogo}></img>
+                    <img src={Systemlogo} onClick={() => navigate('/mainpage')}></img>
             </div>
         
         </div>
@@ -45,7 +47,7 @@ function dashboard() {
         <div className='grid grid-cols-4 gap-4 p-4 '>
             <div className='bg-stone-800 h-25 rounded-lg p-4 border border-stone-700'>
                 <p className='text-white'>Number of Clients</p>
-                <h2 className='text-white'>{clients.length}</h2>
+                <h2 className='text-white'>{activities.length}</h2>
             </div>
                <div className='bg-stone-800 h-25 rounded-lg p-4 border border-stone-700'>
                 <p className='text-white'>Number of Projects</p>
